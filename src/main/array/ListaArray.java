@@ -24,16 +24,10 @@ public class ListaArray implements EstruturaElementar{
 
     @Override
     public int buscaIndice(int valor) {
-        for (int i = 0; i < _ultimoID; i++) {
-            if (_listaArray[i] == valor){
-                if (valor < _ultimoID) {
-                    return i;
-                } else {
-                    return -1;
-                }
-            }
+        if ((valor < 0) || (valor >= _ultimoID)){
+            return -1;
         }
-        return -1;
+        return _listaArray[valor];
     }
 
     @Override

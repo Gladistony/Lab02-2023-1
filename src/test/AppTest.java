@@ -131,7 +131,7 @@ public class AppTest {
         e.insereInicio(3); //[3,2,1,0]
         e.insereElementoPosicao(5, 0); //[5,3,2,1,0]
         assertTrue(e.buscaElemento(5));  
-        assertEquals(4, e.buscaIndice(0)); //verificar com o professor se é de fato 4 ou 5
+        assertEquals(5, e.buscaIndice(0)); 
         e.removeIndice(0);
         assertFalse(e.buscaElemento(5));
         assertEquals(3, e.buscaIndice(0));
