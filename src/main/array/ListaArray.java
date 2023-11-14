@@ -30,6 +30,15 @@ public class ListaArray implements EstruturaElementar{
         return _listaArray[valor];
     }
 
+    public int buscaIndiceValor(int valor){
+        for (int i = 0; i < _ultimoID; i++) {
+            if (_listaArray[i] == valor){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public int minimo() {
         if (_ultimoID == 0) {
@@ -140,7 +149,7 @@ public class ListaArray implements EstruturaElementar{
     }
 
     private boolean remove(int valor, boolean b){
-        int posicao = buscaIndice(valor);
+        int posicao = buscaIndiceValor(valor);
         if (posicao != -1) {
             for (int i = posicao; i < _ultimoID - 1; i++) {
                 _listaArray[i] = _listaArray[i + 1];
