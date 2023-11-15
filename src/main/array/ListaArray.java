@@ -8,7 +8,7 @@ public class ListaArray implements EstruturaElementar{
     private int _ultimoID;
 
     public ListaArray() {
-        _listaArray = new int[1];
+        _listaArray = new int[5];
         _ultimoID = 0;
     }
 
@@ -70,7 +70,11 @@ public class ListaArray implements EstruturaElementar{
     @Override
     public int predecessor(int valor) {
         if ((valor > 1) && (valor < _ultimoID)) {
-            return _listaArray[valor - 1];
+            int posicao = buscaIndiceValor(valor);
+            if (posicao != -1) {
+                return _listaArray[posicao - 1];
+            } else
+                return -1;
         } else {
             return -1;
         }
@@ -79,7 +83,11 @@ public class ListaArray implements EstruturaElementar{
     @Override
     public int sucessor(int valor) {
         if ((valor > -1) && (valor < _ultimoID-1)) {
-            return _listaArray[valor + 1];
+            int posicao = buscaIndiceValor(valor);
+            if (posicao != -1) {
+                return _listaArray[posicao + 1];
+            } else
+                return -1;
         } else {
             return -1;
         }
@@ -93,7 +101,7 @@ public class ListaArray implements EstruturaElementar{
     @Override
     public void insereElementoPosicao(int valor, int buscaIndice) {
         if (buscaIndice < _ultimoID) {
-            int[] temparray = new int[_listaArray.length + 1];
+            int[] temparray = new int[_listaArray.length + 5];
             for (int i = 0; i < buscaIndice; i++) {
                 temparray[i] = _listaArray[i];
             }
@@ -109,7 +117,7 @@ public class ListaArray implements EstruturaElementar{
     @Override
     public void insereInicio(int valor) {
         if (_ultimoID >= _listaArray.length) {
-            int [] listatemp = new int[_listaArray.length + 1];
+            int [] listatemp = new int[_listaArray.length + 5];
             for (int i = 0; i < _listaArray.length; i++) {
                 listatemp[i+1] = _listaArray[i];
             }
@@ -117,7 +125,7 @@ public class ListaArray implements EstruturaElementar{
             _listaArray[0] = valor;
             _ultimoID += 1;
         } else {
-            for (int i = (_ultimoID -1); i >= 0; i--) {
+            for (int i = (_ultimoID -1); i > 0; i--) {
                 _listaArray[i] = _listaArray[i-1];
             }
             _listaArray[0] = valor;
@@ -128,7 +136,7 @@ public class ListaArray implements EstruturaElementar{
     @Override
     public void insereFim(int valor) {
         if (_ultimoID >= _listaArray.length) {
-            int [] listatemp = new int[_listaArray.length + 1];
+            int [] listatemp = new int[_listaArray.length + 5];
             for (int i = 0; i < _listaArray.length; i++) {
                 listatemp[i] = _listaArray[i];
             }
